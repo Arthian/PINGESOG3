@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                Footer
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                <p:menu>
+                    <p:submenu label="RCE">
+                        <p:menuitem value="Admisión" url="http://www.google.cl"/>
+                        <p:menuitem value="Áreas" url="http://www.primefaces.org/documentation.html" />
+                        <p:menuitem value="Especialidades" url="http://www.google.cl" />
+                        <p:menuitem value="Profesionales" url="http://www.primefaces.org/themes.html" />
+                    </p:submenu>
+                </p:menu>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <h1>Admisión de pacientes</h1>
+                <h:form>
+                    <div align="center" id = "divAgregar">
+                        <p:outputLabel value="RUT Paciente: "/>
+                        <p:inputText id="rut" required="true" value="#{pacienteMB.rut}"/>-<p:inputText id="dv" style="width: 10px" required="true" value="#{pacienteMB.digitoVerificador}"/>
+                        <br/><br/>
+                        <p:panelGrid columns="4" >
+                            <p:outputLabel value="Nombres: " />
+                            <p:inputText id="Names" required="true" value="#{pacienteMB.nombres}"/>
+                            <p:outputLabel value="Apellido Paterno: "/>
+                            <p:inputText required="true" value="#{pacienteMB.apellidoPaterno}"/>
+                            <p:outputLabel value="Apellido Materno: "/>
+                            <p:inputText required="true" value="#{pacienteMB.apellidoMaterno}"/>
+                            <p:outputLabel value="Comuna: "/>
+                            <p:selectOneMenu value="#{pacienteMB.comunaId}" required="true">
+                                <f:selectItem itemLabel="Seleccionar una comuna" itemValue="" />
+                                <f:selectItems value="#{listasMB.listaComuna}" var="comu" itemLabel="#{comu.comuNombre}" itemValue="#{comu.idComuna}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Género: "/>
+                            <p:selectOneMenu value="#{pacienteMB.generoId}" required="true">
+                                <f:selectItem itemLabel="Seleccionar uno" itemValue="" />
+                                <f:selectItems value="#{listasMB.listaGenero}" var="gen" itemLabel="#{gen.estadNombre}" itemValue="#{gen.idGenero}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Email: "/>
+                            <p:inputText value="#{pacienteMB.email}"/>
+                            <p:outputLabel value="Teléfono: "/>
+                            <p:inputText value="#{pacienteMB.telefono}"/>
+                            <p:outputLabel value="Celular: "/>
+                            <p:inputText value="#{pacienteMB.celular}"/>
+                            <p:outputLabel value="Teléfono de contacto: "/>
+                            <p:inputText required="true" value="#{pacienteMB.telefonoContacto}"/>
+                            <p:outputLabel value="Dirección: "/>
+                            <p:inputText value="#{pacienteMB.direccion}"/>
+                            <p:outputLabel value="Fecha Nacimiento: "/>
+                            <p:calendar effect="explode" yearRange="c-100:c" navigator="true" value="#{pacienteMB.fechaNacimiento}"/>
+                            <p:outputLabel value="Edad: "/>
+                            <p:inputText/>
+                            <p:outputLabel value="Nacionalidad: "/>
+                            <p:inputText value="#{pacienteMB.nacionalidad}"/>
+                            <p:outputLabel value="Consultorio: "/>
+                            <p:selectOneMenu>
+                                <f:selectItem itemLabel="Seleccionar Previsión" itemValue="" />
+                                <f:selectItems value="#{listasMB.listaConsultorio}" var="cons" itemLabel="#{cons.consNombre}" itemValue="#{cons.idConsultorio}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Previsión de salud: "/>
+                            <p:selectOneMenu value="#{pacienteMB.previsionId}" required="true">
+                                <f:selectItem itemLabel="Seleccionar Previsión" itemValue="" />
+                                <f:selectItems value="#{listasMB.listaPrevision}" var="prev" itemLabel="#{prev.previNombre}" itemValue="#{prev.idPrevision}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Tipo previsión: "/>
+                            <p:selectOneMenu value="#{pacienteMB.tipoPrevisionId}" disabled="true">
+                                <f:selectItem itemLabel="Seleccionar tipo" itemValue="" />
+                                <f:selectItems value="#{listasMB.listaTipos}" var="tipo" itemLabel="#{tipo.clasNombre}" itemValue="#{tipo.idTipoprevision}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Leyes sociales: "/>
+                            <p:selectOneMenu value="#{pacienteMB.leyesSocialesId}" >
+                                <f:selectItem itemLabel="Seleccionar una" itemValue="" />
+                                <f:selectItems value="#{listasMB.listaLeyes}" var="ley" itemLabel="#{ley.leyesNombre}" itemValue="#{ley.idLeyessociales}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Ley 16.744: "/>
+                            <p:selectOneMenu >
+                                <f:selectItem itemLabel="Seleccionar una" itemValue="" />
+                                <f:selectItem itemLabel="Leyes" itemValue="1" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Estado Conyugal: "/>
+                            <p:selectOneMenu value="#{pacienteMB.estadoConyugalId}">
+                                <f:selectItem itemLabel="Seleccionar uno" itemValue="" />
+                                <f:selectItems value="#{listasMB.listaEstados}" var="e" itemLabel="#{e.estadNombre}" itemValue="#{e.idEstadoconyugal}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Nivel de Educaciòn: "/>
+                            <p:selectOneMenu value="#{pacienteMB.educacionId}" >
+                                <f:selectItem itemLabel="Seleccionar una" itemValue="" />
+                                <f:selectItems value="#{listasMB.listaEducacion}" var="edu" itemLabel="#{edu.educNombre}" itemValue="#{edu.idEducacion}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Ocupación: "/>
+                            <p:inputText value="#{pacienteMB.ocupacion}"/>
+                            <p:outputLabel value="Actividad Económica: "/>
+                            <p:inputText value="#{pacienteMB.actividadEconomica}"/>
+                            <p:outputLabel value="Pueblo Originario: "/>
+                            <p:selectOneMenu value="#{pacienteMB.puebloOriginarioId}">
+                                <f:selectItem itemLabel="Seleccionar uno" itemValue="" />
+                                <f:selectItems value="#{listasMB.listaPueblos}" var="town" itemLabel="#{town.reliNombre}" itemValue="#{town.idPueblooriginario}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Religión: "/>
+                            <p:selectOneMenu value="#{pacienteMB.religionId}">
+                                <f:selectItem itemLabel="Seleccionar una" itemValue="" />
+                                <f:selectItems value="#{listasMB.listaReligion}" var="reli" itemLabel="#{reli.reliNombre}" itemValue="#{reli.idReligion}" />
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                        <p:commandButton action="#{pacienteMB.agregarPaciente()}" value="Prueba"/>
+
+                    </div>
+                </h:form>
+            </p:layoutUnit>
+
+        </p:layout>
+    </h:body>
+</html>
+
