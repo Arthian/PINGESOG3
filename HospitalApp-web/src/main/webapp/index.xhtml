@@ -25,16 +25,21 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                    <p:menu>
+                    <p:panelMenu>
                         <p:submenu label="RCE">
-                            <p:menuitem value="Admisión" outcome="Paciente"/>
+                            <p:submenu label="Paciente" icon="ui-icon-extlink">
+                                <p:menuitem value="Ingresar" outcome="Paciente"/>
+                                <p:menuitem value="Editar" url="http://www.google.cl"/>
+                                <p:menuitem value="Listar" url="http://www.google.cl"/>
+                                <p:menuitem value="Eliminar" url="http://www.google.cl"/>
+                            </p:submenu>                            
                             <p:menuitem value="Áreas" url="http://www.google.cl"/>
                             <p:menuitem value="Especialidades"  url="http://www.google.cl"/>
                             <p:menuitem value="Profesionales"  url="http://www.google.cl"/>
 
                         </p:submenu>
 
-                    </p:menu>
+                    </p:panelMenu>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
